@@ -19,3 +19,6 @@ dependencies {
 }
 
 
+processResources{
+    expand gradle.properties
+}
