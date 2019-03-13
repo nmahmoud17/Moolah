@@ -2,3 +2,5 @@
 .idea_modules/
 .gradle/*
 out/
+
+/gradle.properties
