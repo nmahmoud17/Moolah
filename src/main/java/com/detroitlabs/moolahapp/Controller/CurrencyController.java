@@ -32,7 +32,7 @@ public class CurrencyController {
 
     @RequestMapping("countryAndCurrency")
     public ModelAndView showExchangeRateAndBusinessInfo(@RequestParam("USDollars") Double uSD, @RequestParam("country") String countryCode, @RequestParam("cityAndCountryLocationInfo") String locationInfo) {
-        ModelAndView modelAndView = new ModelAndView("home");
+        ModelAndView modelAndView = new ModelAndView("listings");
         AllCurrencyData allCurrencyData = currencyService.fetchCurrencyInfo();
 
 
