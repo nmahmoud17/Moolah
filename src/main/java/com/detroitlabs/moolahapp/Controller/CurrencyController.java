@@ -5,6 +5,7 @@ import com.detroitlabs.moolahapp.Model.BusinessInformation;
 import com.detroitlabs.moolahapp.Model.Businesses;
 import com.detroitlabs.moolahapp.Services.CurrencyService;
 import com.detroitlabs.moolahapp.Services.YelpService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,6 +48,17 @@ public class CurrencyController {
 
         return modelAndView;
     }
+
+    @RequestMapping("filterListings")
+    public ModelAndView showFilteredListing(@RequestParam("searchCity") String searchedCity, @RequestParam("termOptions") String termOption){
+        ModelAndView modelAndView = new ModelAndView("listings");
+        modelAndView.addObject("exchangedValue", "Listings");
+        Businesses businesses = yelpService.fetchYelpDataForFilter(searchedCity, termOption);
+        ArrayList<BusinessInformation> businessInformationList = businesses.getAllYelpData();
+        modelAndView.addObject("businesses", businessInformationList);
+        return modelAndView;
+    }
+
 
 
 }
