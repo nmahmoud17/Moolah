@@ -36,6 +36,8 @@ public class CurrencyController {
         ModelAndView modelAndView = new ModelAndView("listings");
 
         Double moneyExchanged = currencyService.convertCurrencyFromUsd(uSD,countryCode);
+        modelAndView.addObject("exchangedValue", moneyExchanged);
+        modelAndView.addObject("numOfDays", numberOfDays);
 
        int numOfDollarSigns = yelpService.calculateYelpDollarSignValue(uSD, numberOfDays);
 

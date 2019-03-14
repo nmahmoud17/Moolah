@@ -43,25 +43,23 @@
       <div class="row align-items-center">
 
         <div class="col-11 col-xl-2">
-          <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Moolah</a></h1>
+          <h1 class="mb-0 site-logo"><a href="/" class="text-black h2 mb-0">Moolah</a></h1>
         </div>
         <div class="col-12 col-md-10 d-none d-xl-block">
           <nav class="site-navigation position-relative text-right" role="navigation">
 
             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-              <li><a href="index.html"><span>Home</span></a></li>
+              <li><a href="/"><span>Home</span></a></li>
               <li class="active"><a href="listings.html"><span>Listings</span></a></li>
 
               <li class="has-children">
-                <a href="about.html"><span>About</span></a>
+                <a href="/"><span>Booking</span></a>
                 <ul class="dropdown">
-                  <li><a href="#">The Company</a></li>
-                  <li><a href="#">The Leadership</a></li>
-                  <li><a href="#">Philosophy</a></li>
-                  <li><a href="#">Careers</a></li>
+                  <li><a href="https://www.google.com/flights">Flights</a></li>
+                  <li><a href="https://www.booking.com">Hotels</a></li>
+                  <li><a href="https://www.enterprise.com">Rentals</a></li>
                 </ul>
               </li>
-              <li><a href="blog.html"><span>Blog</span></a></li>
               <li><a href="contact.html"><span>Contact</span></a></li>
             </ul>
           </nav>
@@ -88,8 +86,8 @@
 
         <div class="row justify-content-center">
           <div class="col-md-8 text-center">
-            <h1>Listings</h1>
-            <p class="mb-0">We make your Moolah go further</p>
+            <h1 th:text="${exchangedValue}"></h1>
+            <p class="mb-0">Based upon your budget, this is where you can spend your Moolah!</p>
           </div>
         </div>
 
@@ -113,7 +111,7 @@
 
           <div class="lh-content">
             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-            <h3 th:text="${business.name}"><a th:href="${business.url}">Grill and Restaurants</a></h3>
+            <a th:href="${business.url}"><h3 th:text="${business.name}"></h3></a>
             <p th:text="${business.location.address1}"></p>
             <p th:text="${business.location.city}"></p>
             <p th:text="${business.location.country}"></p>
