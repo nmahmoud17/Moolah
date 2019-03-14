@@ -4,6 +4,8 @@ import com.detroitlabs.moolahapp.Model.AllCurrencyData;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+
 @Component
 public class CurrencyService {
 
@@ -15,4 +17,23 @@ public class CurrencyService {
 
 
     }
-}
+
+
+    public Double convertCurrencyFromUsd(Double uSDollars, String countryCode){
+        AllCurrencyData allCurrencyData = fetchCurrencyInfo();
+
+        HashMap<String, Double> currencyInfo = new HashMap<>();
+        currencyInfo.put("USDAUD", allCurrencyData.getQuotes().getUSDAUD());
+        currencyInfo.put("USDEUR", allCurrencyData.getQuotes().getUSDEUR());
+        currencyInfo.put("USDBRL", allCurrencyData.getQuotes().getUSDBRL());
+        currencyInfo.put("USDCAD", allCurrencyData.getQuotes().getUSDCAD());
+        currencyInfo.put("USDCNY", allCurrencyData.getQuotes().getUSDCNY());
+            if(currencyInfo.containsKey(countryCode)){
+               return uSDollars * currencyInfo.get(countryCode);
+            }
+        return null;
+        }
+
+
+    }
+

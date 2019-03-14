@@ -95,26 +95,29 @@
             <div class="form-search-wrap p-2" data-aos="fade-up" data-aos-delay="200">
               <form action="countryAndCurrency" method="get">
                 <div class="row align-items-center">
-                  <div class="col-lg-12 col-xl-4 no-sm-border border-right">
-                    <input name="USDollars" type="text" class="form-control" placeholder="What is your budget in USD?">
+                  <div class="col-lg-12 col-xl-2 no-sm-border border-right">
+                    <input name="USDollars" type="text" class="form-control" placeholder="Budget?" autofocus required title="Please enter total budget in USD">
                   </div>
-                  <div class="col-lg-12 col-xl-3 no-sm-border border-right">
-                    <div class="wrap-icon">
+                  <div class="col-lg-12 col-xl-2 no-sm-border border-right">
+                    <input name="numberOfDays" type="number" class="form-control" placeholder="Days?" autofocus required title="Please enter days of trip">
+                  </div>
+                  <div class="col-lg-12 col-xl-2 no-sm-border border-right">
+                    <!--<div class="wrap-icon">-->
                       <!--<span class="icon icon-room"></span>-->
-                      <input type="text" name="cityAndCountryLocationInfo"class="form-control" placeholder="Enter your destination" autofocus required title="Please enter city and country">
-                    </div>
+                      <input type="text" name="cityAndCountryLocationInfo"class="form-control" placeholder="Destination?" autofocus required title="Please enter city and country">
+                    <!--</div>-->
                     
                   </div>
-                  <div class="col-lg-12 col-xl-3">
+                  <div class="col-lg-12 col-xl-4">
                     <div class="select-wrap">
                       <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
-                      <select class="form-control" name="country" id="">
-                        <option name="country" value="">Search Countries</option>
-                        <option name="country" value="USDCNY">China</option>
-                        <option name="country" value="USDEUR">Europe</option>
-                        <option name="country" value="USDAUD">Australia</option>
-                        <option name="country" value="USDBRL">Brazil</option>
-                        <option name="country" value="USDCAD">Canada</option>
+                      <select class="form-control" name="country" id="" required>
+                        <option name="country" value="">Currency</option>
+                        <option name="country" value="USDCNY">Chinese Yuan</option>
+                        <option name="country" value="USDEUR">European Euro</option>
+                        <option name="country" value="USDAUD">Australian Dollar, mate</option>
+                        <option name="country" value="USDBRL">Brazilian Real</option>
+                        <option name="country" value="USDCAD">Canadian Dollar, eh?</option>
                       </select>
                     </div>
                   </div>

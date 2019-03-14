@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 
 public class CurrencyServiceTest {
 
+
     @Test
     public void testCurrencyLayerAPIResponseShouldBe200(){
         RestTemplate restTemplate = new RestTemplate();
@@ -22,4 +23,12 @@ public class CurrencyServiceTest {
     }
 
 
+    @Test
+    public void convertCurrencyFromUsd() {
+        CurrencyService currencyService = new CurrencyService();
+       Double actualResult = currencyService.convertCurrencyFromUsd(1.0, "USDCAD");
+       Double expectedResult = 1.332201;
+      assertEquals(expectedResult,actualResult);
+
+    }
 }
