@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 public class YelpService {
 
 
-    public Businesses fetchYelpData(String userInputCityAndCountry){
+    public Businesses fetchYelpData(String userInputCityAndCountry, int numberOfDollarSigns){
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -21,10 +21,28 @@ public class YelpService {
         HttpEntity<String> httpEntity = new HttpEntity<>(headers);
 
         ResponseEntity<Businesses> responseEntity =
-                restTemplate.exchange("https://api.yelp.com/v3/businesses/search?sort_by=rating&location=" + userInputCityAndCountry
+                restTemplate.exchange("https://api.yelp.com/v3/businesses/search?sort_by=rating&location=" + userInputCityAndCountry + "&price=" + numberOfDollarSigns
                         , HttpMethod.GET, httpEntity, Businesses.class);
 
         return responseEntity.getBody();
+
+    }
+
+    public int calculateYelpDollarSignValue(Double usdAmount, int numberOfDays){
+        int numberOfDollarSigns;
+        int dailyAmount = (int) (usdAmount/numberOfDays);
+        if(dailyAmount <= 100){
+            numberOfDollarSigns = 1;
+        } else if(dailyAmount >= 101 && dailyAmount <= 300){
+            numberOfDollarSigns = 2;
+        } else if(dailyAmount >= 301 && dailyAmount <= 800){
+            numberOfDollarSigns = 3;
+        } else {
+            numberOfDollarSigns = 4;
+        }
+
+
+        return numberOfDollarSigns;
 
     }
 }

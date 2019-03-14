@@ -31,13 +31,15 @@ public class CurrencyController {
     }
 
     @RequestMapping("countryAndCurrency")
-    public ModelAndView showExchangeRateAndBusinessInfo(@RequestParam("USDollars") Double uSD, @RequestParam("country") String countryCode
-            , @RequestParam("cityAndCountryLocationInfo") String locationInfo) {
+    public ModelAndView showExchangeRateAndBusinessInfo(@RequestParam("USDollars") Double uSD,@RequestParam("numberOfDays") int numberOfDays
+            , @RequestParam("country") String countryCode, @RequestParam("cityAndCountryLocationInfo") String locationInfo) {
         ModelAndView modelAndView = new ModelAndView("listings");
 
         Double moneyExchanged = currencyService.convertCurrencyFromUsd(uSD,countryCode);
 
-        Businesses businesses = yelpService.fetchYelpData(locationInfo);
+       int numOfDollarSigns = yelpService.calculateYelpDollarSignValue(uSD, numberOfDays);
+
+        Businesses businesses = yelpService.fetchYelpData(locationInfo, numOfDollarSigns);
         ArrayList<BusinessInformation> businessInformationList = businesses.getAllYelpData();
         modelAndView.addObject("businesses", businessInformationList);
 
