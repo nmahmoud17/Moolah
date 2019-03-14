@@ -106,7 +106,6 @@
         <div th:each=" business : ${businesses}" class="d-block d-md-flex listing-horizontal">
 
           <a href="#" class="img d-block"><img th:src="${business.image_url}" width = "300px" height = "300px"/>
-            <span class="category">categoryName</span>
           </a>
 
           <div class="lh-content">
@@ -121,8 +120,9 @@
               <span class="icon-star text-warning"></span>
               <span class="icon-star text-warning"></span>
               <span class="icon-star text-warning"></span>
-              <span class="icon-star text-secondary"></span>
-              <span>(3 Reviews)</span>
+              <span class="icon-star text-warning"></span>
+              <span><p th:text="${business.rating} + ' Rating'"></p></span>
+              <span><p th:text="${business.review_count} + ' Reviews'"></p></span>
             </p>
 
           </div>
@@ -144,21 +144,21 @@
 
         <div class="mb-5">
           <h3 class="h5 text-black mb-3">Filters</h3>
-          <form action="#" method="post">
+          <form action="filterListings" method="post">
             <div class="form-group">
-              <input type="text" placeholder="What are you looking for?" class="form-control">
+              <input type="hidden" value="${exchangedValue}">
+              <input type="text" name="searchCity" placeholder="City" class="form-control">
             </div>
             <div class="form-group">
               <div class="select-wrap">
                 <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
-                <select class="form-control" name="" id="">
-                  <option value="">All Categories</option>
-                  <option value="">Appartment</option>
-                  <option value="">Restaurant</option>
-                  <option value="">Eat &amp; Drink</option>
-                  <option value="">Events</option>
-                  <option value="">Fitness</option>
-                  <option value="">Others</option>
+                <select class="form-control" name="termOptions" id="">
+                  <option value="things to do">Things To Do</option>
+                  <option value="restaurant">Restaurant</option>
+                  <option value="bars">Drinks</option>
+                  <option value="hotels">Hotels</option>
+                  <option value="attractions">Attractions</option>
+
                 </select>
               </div>
             </div>
