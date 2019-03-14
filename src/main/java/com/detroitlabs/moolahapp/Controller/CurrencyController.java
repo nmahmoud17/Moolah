@@ -26,28 +26,25 @@ public class CurrencyController {
     @RequestMapping("/")
     public ModelAndView showCurrencyInformation() {
         ModelAndView modelAndView = new ModelAndView("index");
-        AllCurrencyData allCurrencyData = currencyService.fetchCurrencyInfo();
-        Double usdToAud = allCurrencyData.getQuotes().getUSDAUD();
-        modelAndView.addObject("currency"
-                , usdToAud);
-        Businesses businesses = yelpService.fetchYelpData();
-        ArrayList<BusinessInformation> businessInformationList = businesses.getAllYelpData();
-        modelAndView.addObject("businesses", businessInformationList);
 
         return modelAndView;
     }
 
     @RequestMapping("countryAndCurrency")
-    public ModelAndView showExchangeRateAndBusinessInfo(@RequestParam("USDollars") Double uSD, @RequestParam("country") String countryCode) {
+    public ModelAndView showExchangeRateAndBusinessInfo(@RequestParam("USDollars") Double uSD, @RequestParam("country") String countryCode, @RequestParam("cityAndCountryLocationInfo") String locationInfo) {
         ModelAndView modelAndView = new ModelAndView("home");
         AllCurrencyData allCurrencyData = currencyService.fetchCurrencyInfo();
 
-        System.out.println(countryCode);
+
         if(countryCode.equalsIgnoreCase("USDAUD")){
             Double usdToAud = uSD * allCurrencyData.getQuotes().getUSDAUD();
-
             modelAndView.addObject("currency", usdToAud);
         }
+
+        Businesses businesses = yelpService.fetchYelpData(locationInfo);
+        ArrayList<BusinessInformation> businessInformationList = businesses.getAllYelpData();
+        modelAndView.addObject("businesses", businessInformationList);
+
         return modelAndView;
     }
 

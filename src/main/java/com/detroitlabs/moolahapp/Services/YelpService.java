@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 public class YelpService {
 
 
-    public Businesses fetchYelpData(){
+    public Businesses fetchYelpData(String userInputCityAndCountry){
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -21,7 +21,7 @@ public class YelpService {
         HttpEntity<String> httpEntity = new HttpEntity<>(headers);
 
         ResponseEntity<Businesses> responseEntity =
-                restTemplate.exchange("https://api.yelp.com/v3/businesses/search?sort_by=rating&location=detroit,mi"
+                restTemplate.exchange("https://api.yelp.com/v3/businesses/search?sort_by=rating&location=" + userInputCityAndCountry
                         , HttpMethod.GET, httpEntity, Businesses.class);
 
         return responseEntity.getBody();
