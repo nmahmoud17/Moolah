@@ -11,7 +11,7 @@ public class YelpServiceTest {
     public void testFetchYelpDataShouldReturnErniesMarket() {
 
         YelpService yelpService = new YelpService();
-        Businesses businesses = yelpService.fetchYelpData();
+        Businesses businesses = yelpService.fetchYelpData("detroit");
 
         Assert.assertEquals("Ernie's Market", businesses.getAllYelpData().get(0).getName());
 

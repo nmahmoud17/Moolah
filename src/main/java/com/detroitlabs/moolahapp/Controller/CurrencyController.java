@@ -31,15 +31,11 @@ public class CurrencyController {
     }
 
     @RequestMapping("countryAndCurrency")
-    public ModelAndView showExchangeRateAndBusinessInfo(@RequestParam("USDollars") Double uSD, @RequestParam("country") String countryCode, @RequestParam("cityAndCountryLocationInfo") String locationInfo) {
+    public ModelAndView showExchangeRateAndBusinessInfo(@RequestParam("USDollars") Double uSD, @RequestParam("country") String countryCode
+            , @RequestParam("cityAndCountryLocationInfo") String locationInfo) {
         ModelAndView modelAndView = new ModelAndView("listings");
-        AllCurrencyData allCurrencyData = currencyService.fetchCurrencyInfo();
 
-
-        if(countryCode.equalsIgnoreCase("USDAUD")){
-            Double usdToAud = uSD * allCurrencyData.getQuotes().getUSDAUD();
-            modelAndView.addObject("currency", usdToAud);
-        }
+        Double moneyExchanged = currencyService.convertCurrencyFromUsd(uSD,countryCode);
 
         Businesses businesses = yelpService.fetchYelpData(locationInfo);
         ArrayList<BusinessInformation> businessInformationList = businesses.getAllYelpData();
