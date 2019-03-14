@@ -146,79 +146,78 @@
           <h3 class="h5 text-black mb-3">Filters</h3>
           <form action="filterListings" method="post">
             <div class="form-group">
-              <input type="hidden" value="${exchangedValue}">
-              <input type="text" name="searchCity" placeholder="City" class="form-control">
+              <input type="text" name="searchCity" placeholder="City" class="form-control" required>
             </div>
             <div class="form-group">
               <div class="select-wrap">
                 <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
-                <select class="form-control" name="termOptions" id="">
+                <select class="form-control" name="termOptions" id="" required>
                   <option value="things to do">Things To Do</option>
                   <option value="restaurant">Restaurant</option>
                   <option value="bars">Drinks</option>
                   <option value="hotels">Hotels</option>
                   <option value="attractions">Attractions</option>
-
                 </select>
               </div>
             </div>
-            <div class="form-group">
-              <!-- select-wrap, .wrap-icon -->
-              <div class="wrap-icon">
-                <span class="icon icon-room"></span>
-                <input type="text" placeholder="Location" class="form-control">
-              </div>
-            </div>
+            <input type="submit" value="Search">
+            <!--<div class="form-group">-->
+              <!--&lt;!&ndash; select-wrap, .wrap-icon &ndash;&gt;-->
+              <!--<div class="wrap-icon">-->
+                <!--<span class="icon icon-room"></span>-->
+                <!--<input type="text" placeholder="Location" class="form-control">-->
+              <!--</div>-->
+            <!--</div>-->
           </form>
         </div>
 
-        <div class="mb-5">
-          <form action="#" method="post">
-            <div class="form-group">
-              <p>Radius around selected destination</p>
-            </div>
-            <div class="form-group">
-              <input type="range" min="0" max="100" value="20" data-rangeslider>
-            </div>
-          </form>
-        </div>
+        <!--<div class="mb-5">-->
+          <!--<form action="#" method="post">-->
+            <!--<div class="form-group">-->
+              <!--<p>Radius around selected destination</p>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+              <!--<input type="range" min="0" max="100" value="20" data-rangeslider>-->
+            <!--</div>-->
+          <!--</form>-->
+        <!--</div>-->
 
-        <div class="mb-5">
-          <form action="#" method="post">
-            <div class="form-group">
-              <p>Category 'Restaurant' is selected</p>
-              <p>More filters</p>
-            </div>
-            <div class="form-group">
-              <ul class="list-unstyled">
-                <li>
-                  <label for="option1">
-                    <input type="checkbox" id="option1">
-                    Coffee
-                  </label>
-                </li>
-                <li>
-                  <label for="option2">
-                    <input type="checkbox" id="option2">
-                    Vegetarian
-                  </label>
-                </li>
-                <li>
-                  <label for="option3">
-                    <input type="checkbox" id="option3">
-                    Vegan Foods
-                  </label>
-                </li>
-                <li>
-                  <label for="option4">
-                    <input type="checkbox" id="option4">
-                    Sea Foods
-                  </label>
-                </li>
-              </ul>
-            </div>
-          </form>
-        </div>
+        <!--<div class="mb-5">-->
+          <!--<form action="#" method="post">-->
+            <!--<div class="form-group">-->
+              <!--<p>Category 'Restaurant' is selected</p>-->
+              <!--<p>More filters</p>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+              <!--<ul class="list-unstyled">-->
+                <!--<li>-->
+                  <!--<label for="option1">-->
+                    <!--<input type="checkbox" id="option1">-->
+                    <!--Coffee-->
+                  <!--</label>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<label for="option2">-->
+                    <!--<input type="checkbox" id="option2">-->
+                    <!--Vegetarian-->
+                  <!--</label>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<label for="option3">-->
+                    <!--<input type="checkbox" id="option3">-->
+                    <!--Vegan Foods-->
+                  <!--</label>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<label for="option4">-->
+                    <!--<input type="checkbox" id="option4">-->
+                    <!--Sea Foods-->
+                  <!--</label>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</div>-->
+          <!--</form>-->
+        <!--</div>-->
 
       </div>
 

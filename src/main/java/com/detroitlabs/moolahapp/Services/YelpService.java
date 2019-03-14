@@ -28,6 +28,25 @@ public class YelpService {
 
     }
 
+    public Businesses fetchYelpDataForFilter(String userInputCityAndCountry, String term){
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "BEARER iRtbrQng3VXivm-1VrAHkh5DPWQOomj9raedfqWflsFAUlF4SCHE9fUHuwS-8tnegHzLVKsGTRoH49nWsULC2lvSaonzzoOIY6UuBvO4YijJ1xmpHSmbb-_1qX2GXHYx");
+        headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
+
+        HttpEntity<String> httpEntity = new HttpEntity<>(headers);
+
+        ResponseEntity<Businesses> responseEntity =
+                restTemplate.exchange("https://api.yelp.com/v3/businesses/search?sort_by=rating&location=" + userInputCityAndCountry + "&term=" + term
+                        , HttpMethod.GET, httpEntity, Businesses.class);
+
+        return responseEntity.getBody();
+
+    }
+
+
     public int calculateYelpDollarSignValue(Double usdAmount, int numberOfDays){
         int numberOfDollarSigns;
         int dailyAmount = (int) (usdAmount/numberOfDays);
