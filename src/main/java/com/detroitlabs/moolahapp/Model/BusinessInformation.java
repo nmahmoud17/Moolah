@@ -51,6 +51,7 @@ public class BusinessInformation {
     }
 
     public String getPrice() {
+
         return price;
     }
 
