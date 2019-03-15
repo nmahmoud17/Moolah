@@ -4,6 +4,7 @@ import com.detroitlabs.moolahapp.Model.AllCurrencyData;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 @Component
@@ -19,7 +20,7 @@ public class CurrencyService {
     }
 
 
-    public Double convertCurrencyFromUsd(Double uSDollars, String countryCode){
+    public String convertCurrencyFromUsd(Double uSDollars, String countryCode){
         AllCurrencyData allCurrencyData = fetchCurrencyInfo();
 
         HashMap<String, Double> currencyInfo = new HashMap<>();
@@ -29,7 +30,8 @@ public class CurrencyService {
         currencyInfo.put("USDCAD", allCurrencyData.getQuotes().getUSDCAD());
         currencyInfo.put("USDCNY", allCurrencyData.getQuotes().getUSDCNY());
             if(currencyInfo.containsKey(countryCode)){
-               return uSDollars * currencyInfo.get(countryCode);
+                DecimalFormat decimalFormat = new DecimalFormat("#.##");
+               return decimalFormat.format(uSDollars * currencyInfo.get(countryCode));
             }
         return null;
         }
