@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,6 +40,7 @@ public class CurrencyController {
         Double moneyExchanged = currencyService.convertCurrencyFromUsd(uSD,countryCode);
         modelAndView.addObject("exchangedValue", moneyExchanged);
         modelAndView.addObject("numOfDays", numberOfDays);
+        modelAndView.addObject("location",locationInfo);
 
        int numOfDollarSigns = yelpService.calculateYelpDollarSignValue(uSD, numberOfDays);
 
@@ -50,7 +52,8 @@ public class CurrencyController {
     }
 
     @RequestMapping("filterListings")
-    public ModelAndView showFilteredListing(@RequestParam("searchCity") String searchedCity, @RequestParam("termOptions") String termOption){
+    public ModelAndView showFilteredListing(@RequestParam("locationCity") String searchedCity, @RequestParam("termOptions") String termOption){
+
         ModelAndView modelAndView = new ModelAndView("listings");
         modelAndView.addObject("exchangedValue", "Listings");
         Businesses businesses = yelpService.fetchYelpDataForFilter(searchedCity, termOption);
